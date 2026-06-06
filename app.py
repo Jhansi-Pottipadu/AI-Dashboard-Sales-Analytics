@@ -3,32 +3,21 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(page_title="Restaurant Tips Dashboard", layout="wide")
-
-# Load Dataset
 df = pd.read_csv("dataset.csv")
-
-# Data Cleaning
 df.drop_duplicates(inplace=True)
 df.fillna(0, inplace=True)
 
 st.title("AI Dashboard - Restaurant Tips Analysis")
-
-# Dataset Overview
 st.header("Dataset Overview")
-
 st.write("Number of Rows:", df.shape[0])
 st.write("Number of Columns:", df.shape[1])
-
 st.dataframe(df.head())
-
 # Data Cleaning Report
 st.header("Data Cleaning")
 
 st.write("Missing Values")
 
 st.write(df.isnull().sum())
-
-# Filters
 st.sidebar.header("Interactive Filters")
 
 gender = st.sidebar.multiselect(
